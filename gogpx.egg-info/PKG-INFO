@@ -1,0 +1,36 @@
+Metadata-Version: 2.4
+Name: gogpx
+Version: 0.1.0
+Summary: Image to GPX pipeline with managed APIs
+Author: gogpx
+License-Expression: LicenseRef-Proprietary
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic>=2.6.0
+Requires-Dist: pydantic-ai-slim[openai]>=0.0.14
+Requires-Dist: requests>=2.31.0
+Requires-Dist: Pillow>=10.2.0
+Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: tenacity>=9.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4.0; extra == "dev"
+Requires-Dist: ruff>=0.5.0; extra == "dev"
+Requires-Dist: ty>=0.0.1; extra == "dev"
+Requires-Dist: bandit>=1.7.8; extra == "dev"
+Requires-Dist: pip-audit>=2.7.0; extra == "dev"
+
+# gogpx
+
+Image → GPX pipeline using managed APIs (OpenAI vision + GraphHopper).
+
+## Quick start
+1. Ensure `OPENAI_API_KEY` and `GRAPHOPPER_API_KEY` are set (or `GRAPHHOPPER_API_KEY`).
+2. Install deps: `uv sync --extra dev`
+3. Run:
+```bash
+python scripts/route_from_image.py --image data/kluisbos/kluisbos.png --out /tmp/kluisbos_out.gpx
+```
+
+## Tests
+- Unit tests: `ci/run_tests.sh unit`
+- Integration tests (requires API keys): `ci/run_tests.sh integration`

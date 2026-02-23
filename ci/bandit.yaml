@@ -1,0 +1,4 @@
+profiles:
+  default:
+    include:
+      - "**/*.py"

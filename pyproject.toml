@@ -1,0 +1,53 @@
+[project]
+name = "gogpx"
+version = "0.1.0"
+description = "Image to GPX pipeline with managed APIs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "LicenseRef-Proprietary"
+authors = [{name = "gogpx"}]
+
+dependencies = [
+  "pydantic>=2.6.0",
+  "pydantic-ai-slim[openai]>=0.0.14",
+  "requests>=2.31.0",
+  "Pillow>=10.2.0",
+  "python-dotenv>=1.0.1",
+  "tenacity>=9.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4.0",
+  "ruff>=0.5.0",
+  "ty>=0.0.1",
+  "bandit>=1.7.8",
+  "pip-audit>=2.7.0",
+]
+
+[project.scripts]
+gogpx = "gogpx.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["gogpx"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+markers = [
+  "integration: requires real API credentials",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.ty.environment]
+root = ["."]
